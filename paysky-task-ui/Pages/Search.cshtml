@@ -1,0 +1,44 @@
+@page
+@model SearchModel
+@{
+    ViewData["Title"] = "Search Vacancies";
+}
+<h2>Search Vacancies</h2>
+<form method="get">
+    <label>Search:</label>
+    <input name="query" value="@Model.Query" />
+    <button type="submit">Search</button>
+</form>
+@if (Model.Message != null)
+{
+    <p>@Model.Message</p>
+}
+@if (Model.Vacancies != null)
+{
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Max Applications</th>
+            <th>Expiry Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var v in Model.Vacancies)
+        {
+            <tr>
+                <td>@v.Title</td>
+                <td>@v.Description</td>
+                <td>@v.MaxApplications</td>
+                <td>@v.ExpiryDate.ToShortDateString()</td>
+                <td>@(v.IsActive ? "Active" : "Inactive")</td>
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="VacancyId" value="@v.Id" />
+                        <button type="submit">Apply</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}

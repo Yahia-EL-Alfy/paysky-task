@@ -1,0 +1,24 @@
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<h2>Register</h2>
+<form method="post">
+    <label>Username:</label>
+    <input asp-for="RegisterDto.Username" /> <br />
+    <label>Email:</label>
+    <input asp-for="RegisterDto.Email" /> <br />
+    <label>Password:</label>
+    <input asp-for="RegisterDto.Password" type="password" /> <br />
+    <label>Role:</label>
+    <select asp-for="RegisterDto.Role">
+        <option value="Employer">Employer</option>
+        <option value="Applicant">Applicant</option>
+    </select> <br />
+    <button type="submit">Register</button>
+</form>
+@if (Model.Message != null)
+{
+    <p>@Model.Message</p>
+}

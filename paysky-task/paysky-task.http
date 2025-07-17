@@ -1,0 +1,6 @@
+@paysky_task_HostAddress = http://localhost:5081
+
+GET {{paysky_task_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

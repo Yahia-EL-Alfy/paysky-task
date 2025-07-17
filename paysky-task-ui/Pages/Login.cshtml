@@ -1,0 +1,21 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+<h2>Login</h2>
+<form method="post">
+    <label>Username:</label>
+    <input asp-for="LoginDto.Username" /> <br />
+    <label>Password:</label>
+    <input asp-for="LoginDto.Password" type="password" /> <br />
+    <button type="submit">Login</button>
+</form>
+@if (Model.Message != null)
+{
+    <p>@Model.Message</p>
+}
+@if (Model.Token != null)
+{
+    <p>JWT Token: <code>@Model.Token</code></p>
+}

@@ -1,0 +1,45 @@
+@page
+@model VacanciesModel
+@{
+    ViewData["Title"] = "Manage Vacancies";
+}
+<h2>Manage Vacancies</h2>
+@if (Model.Message != null)
+{
+    <p>@Model.Message</p>
+}
+<h3>Create Vacancy</h3>
+<form method="post">
+    <label>Title:</label>
+    <input asp-for="NewVacancy.Title" /> <br />
+    <label>Description:</label>
+    <input asp-for="NewVacancy.Description" /> <br />
+    <label>Max Applications:</label>
+    <input asp-for="NewVacancy.MaxApplications" type="number" /> <br />
+    <label>Expiry Date:</label>
+    <input asp-for="NewVacancy.ExpiryDate" type="date" /> <br />
+    <button type="submit">Create</button>
+</form>
+<h3>Your Vacancies</h3>
+@if (Model.Vacancies != null)
+{
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Max Applications</th>
+            <th>Expiry Date</th>
+            <th>Status</th>
+        </tr>
+        @foreach (var v in Model.Vacancies)
+        {
+            <tr>
+                <td>@v.Title</td>
+                <td>@v.Description</td>
+                <td>@v.MaxApplications</td>
+                <td>@v.ExpiryDate.ToShortDateString()</td>
+                <td>@(v.IsActive ? "Active" : "Inactive")</td>
+            </tr>
+        }
+    </table>
+}
