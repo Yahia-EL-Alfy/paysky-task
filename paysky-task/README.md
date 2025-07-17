@@ -40,7 +40,7 @@ dotnet ef database update --project paysky-task.csproj
 ```sh
 dotnet run --project paysky-task.csproj
 ```
-- The API will start (by default on `https://localhost:7291` ).
+- The API will start (by default on `https://localhost:7291` for swagger ).
 
 ---
 
@@ -76,7 +76,7 @@ dotnet run --project paysky-task.csproj
 ---
 
 ## 9. Project Structure
-- See `BACKEND_README.md` for a detailed explanation of every file and the architecture.
+- See `BACKEND_README.pdf` for a detailed explanation of every file and the architecture.
 
 ---
 
